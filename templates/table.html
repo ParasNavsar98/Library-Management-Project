@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MongoDB Items</title>
+    <!-- Bootstrap CSS CDN -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    />
+    <style>
+        body {
+            background-color: #c1d3e7; /* softer blue-grey background */
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        table {
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background-color: #343a40;
+            color: white;
+        }
+
+        td, th {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .table-responsive {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 LIBRARY MANAGEMENT SYSYTEM</h1>
+
+        {% if items %}
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                            <tr>
+                                <td>{{ item.title }}</td>
+                                <td>{{ item.author }}</td>
+                                <td>{{ item.year }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-warning text-center" role="alert">
+                No data found in the collection.
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
